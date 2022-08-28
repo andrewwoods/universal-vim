@@ -160,6 +160,16 @@ set nowritebackup
 " ==== Plugins ================================================
 "
 
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'morhetz/gruvbox'
+Plug 'preservim/tagbar'
+
+call plug#end()
+
+
 
 
 "
@@ -168,6 +178,24 @@ set nowritebackup
 
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
+
+let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-x': 'split',
+    \ 'ctrl-v': 'vsplit'
+    \ }
+
+let g:fzf_layout = { 'window': {
+    \ 'width': 0.9,
+    \ 'height': 0.9
+    \ }
+\ }
+
+
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Default Style
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
 
 "
@@ -190,6 +218,38 @@ nnoremap <Leader>fe :Lexplore!<CR>
 nnoremap <Leader>th :terminal<CR>
 nnoremap <Leader>tv :vertical terminal<CR>
 
+" Open the buffers list
+nnoremap <Leader>ob :Buffers<CR>
+
+" Open any of our project files
+nnoremap <Leader>of :Files<CR>
+
+" Open any of our Git managed files
+nnoremap <Leader>og :GFiles<CR>
+
+" Search
+nnoremap <Leader>sc :Rg
+
+" Search in full screen
+nnoremap <Leader>sf :Rg!
+
+" Search lines in All Buffers
+nnoremap <Leader>sa :Lines<CR>
+
+" Search lines in Current Buffer
+nnoremap <Leader>sb :BLines<CR>
+
+" Git status
+nnoremap <Leader>dg :GFiles?<CR>
+
+" Display Marks
+nnoremap <Leader>db :Marks<CR>
+
+" Display Mappings
+nnoremap <Leader>dm :Maps<CR>
+
+" Choose from the themes (colorschemes) list
+nnoremap <Leader>dt :Colors<CR>
 
 "
 " ==== Auto Commands ===========================================
