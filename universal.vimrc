@@ -156,6 +156,11 @@ set noswapfile
 set nobackup
 set nowritebackup
 
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
 
 "
 " ==== Plugins ================================================
@@ -165,8 +170,12 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'morhetz/gruvbox'
-Plug 'preservim/tagbar'
+Plug 'mhinz/vim-startify'
+Plug 'mbbill/undotree'
+Plug 'tpope/surround.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -196,7 +205,7 @@ let g:fzf_layout = { 'window': {
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Default Style
-let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+let g:fzf_preview_window = ['down:50%', 'ctrl-/']
 
 
 "
@@ -231,9 +240,24 @@ let g:lightline = {
 "
 let mapleader=" "
 
-nnoremap <Leader>fe :Lexplore!<CR>
-nnoremap <Leader>th :terminal<CR>
-nnoremap <Leader>tv :vertical terminal<CR>
+
+" Display Marks
+nnoremap <Leader>db :Marks<CR>
+
+" Display Commands
+nnoremap <Leader>dc :Commands<CR>
+
+" Git status
+nnoremap <Leader>dg :GFiles?<CR>
+
+" Display Mappings
+nnoremap <Leader>dm :Maps<CR>
+
+" Choose from the themes (colorschemes) list
+nnoremap <Leader>dt :Colors<CR>
+
+" Open the UltiSnips editor
+nnoremap <Leader>es :UltiSnipsEdit!<CR>
 
 " Open the buffers list
 nnoremap <Leader>ob :Buffers<CR>
@@ -244,11 +268,8 @@ nnoremap <Leader>of :Files<CR>
 " Open any of our Git managed files
 nnoremap <Leader>og :GFiles<CR>
 
-" Search
-nnoremap <Leader>sc :Rg
-
-" Search in full screen
-nnoremap <Leader>sf :Rg!
+" Open Startify
+nnoremap <Leader>os :Startify<CR>
 
 " Search lines in All Buffers
 nnoremap <Leader>sa :Lines<CR>
@@ -256,17 +277,18 @@ nnoremap <Leader>sa :Lines<CR>
 " Search lines in Current Buffer
 nnoremap <Leader>sb :BLines<CR>
 
-" Git status
-nnoremap <Leader>dg :GFiles?<CR>
+" Search
+nnoremap <Leader>sc :Rg
 
-" Display Marks
-nnoremap <Leader>db :Marks<CR>
+" Search in full screen
+nnoremap <Leader>sf :Rg!
 
-" Display Mappings
-nnoremap <Leader>dm :Maps<CR>
+" Open a terminal in a horizontal split
+nnoremap <Leader>th :terminal<CR>
 
-" Choose from the themes (colorschemes) list
-nnoremap <Leader>dt :Colors<CR>
+" Open a terminal in a vertical split
+nnoremap <Leader>tv :vertical terminal<CR>
+
 
 "
 " ==== Auto Commands ===========================================
