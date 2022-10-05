@@ -1,9 +1,9 @@
 "
-" Universal Vim Configuraiton
+" Universal Vim Configuration
 "
 " An attempt to provide a solid configuration file that can be
 " used between standard Vim and Neovim. Also, this is meant to
-" applicable to any type of Vim user - not just deveclopers. 
+" applicable to any type of Vim user - not just developers.
 "
 " Developed using Vim 8.2 and Neovim 0.7.0
 "
@@ -46,7 +46,6 @@ if has("statusline")
 
     " Separate left side from right side
     set statusline+=%=
-
     " File format/type
     set statusline+=(%{&ff})
     " current line number / total lines
@@ -72,13 +71,15 @@ hi ColorColumn ctermbg=235
 
 syntax on
 
-" Look for project specific config file
+
+
+" Look for project specific configuration file
 set exrc
 
 " Ability to change buffers without saving first
 set hidden
 
-" Errer settings
+" Error settings
 set noerrorbells
 set novisualbell
 
@@ -170,8 +171,6 @@ Plug 'preservim/tagbar'
 call plug#end()
 
 
-
-
 "
 " ==== Variables ===============================================
 "
@@ -179,6 +178,9 @@ call plug#end()
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+"
+" ---- FZF Fuzzy Finder ---------
+"
 let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
     \ 'ctrl-x': 'split',
@@ -191,11 +193,26 @@ let g:fzf_layout = { 'window': {
     \ }
 \ }
 
-
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Default Style
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+
+
+"
+" ---- Startify -----------------
+"
+
+"
+" ---- Lightline ----------------
+"
+let g:lightline = {
+    \ 'colorscheme': 'jellybeans',
+    \ }
+
+"
+" ---- UltiSnips ----------------
+"
 
 
 "
